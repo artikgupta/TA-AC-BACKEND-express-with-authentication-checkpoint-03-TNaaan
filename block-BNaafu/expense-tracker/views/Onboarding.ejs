@@ -1,0 +1,117 @@
+<%- include('partials/header') -%>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+<div class="container">
+    <div class="income">
+
+    <div class="flex">
+
+        <h1>Income</h1>
+        <div>
+            <a href="/income/create">
+                <button  class="add">ADD <i class="fas fa-plus"></i></button>
+            </a>
+        </div>
+    </div>
+    <div class="box">
+<% if(incomes.length){%>
+    <% incomes.forEach((income)=> { %>
+        
+        <div class="card">
+            
+          <h3 class="category"><%= income.source %></h3>
+          <p class="amount"><%= income.amount %></p>
+          <p class="date"><%= income.createdAt.toLocaleString()  %> </p>
+
+
+          <div class="flex">
+
+              <div>
+                <a href="/income/<%=income.id%>/edit ">
+                  <button  class="edit"><i class="fas fa-edit"></i></button>
+              </a>
+            </div>
+    
+              <div >
+                  <a href="/income/<%=income.id%>/delete ">
+                    <button class="delete"><i class="fas fa-trash-alt"></i></button>
+                </a>
+              </div>
+          </div>
+         
+          
+        </div>
+<%}) } else{ %>
+<h2>No Income  Found</h2>
+<%} %>
+    
+</div>
+
+</div>
+
+
+
+
+    <div class="expense">
+        <div class="flex">
+
+            <h1>Expense</h1>
+            <div >
+                <a href="/expense/create">
+                    <button class="add">ADD <i class="fas fa-plus"></i></button>
+                </a>
+            </div>
+        </div>
+    <div class="box">
+        
+    <% if(expenses.length){%>
+        <% expenses.forEach((expense)=>{ %>
+            <div class="card">
+                
+              <h3 class="category"><%= expense.category%></h3>
+              <p class="amount"><%= expense.amount%></p>
+              <p class="date"><%= expense.createdAt.toLocaleString()  %> </p>
+              
+             <div class="flex">
+              <div>
+                <a href="/expense/<%=expense.id%>/edit ">
+                  <button  class="edit"><i class="fas fa-edit"></i></button>
+              </a>
+            </div>
+
+              <div >
+                <a href="/expense/<%=expense.id%>/delete ">
+                  <button class="delete"><i class="fas fa-trash-alt"></i></button>
+              </a>
+            </div>
+        </div>
+            </div>
+    <%}) } else{ %>
+    <h2>No Expense  Found</h2>
+    <%} %>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <%- include('partials/footer') -%> -->
